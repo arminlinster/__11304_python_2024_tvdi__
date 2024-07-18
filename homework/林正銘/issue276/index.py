@@ -34,7 +34,11 @@ def main():
             insert_sql = '''
                 INSERT INTO youbike(sna, sarea, ar, mday, updatetime, total, rent_bikes, return_bikes, lat, lng, act)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)  
+<<<<<<< HEAD
                 ON CONFLICT (sna, updateTime) DO NOTHING;
+=======
+             ON CONFLICT (sna, updateTime) DO NOTHING;   
+>>>>>>> 129e9670e0a442d662319988d8aae4b31886f86a
             '''
             
             for site in all_data:
