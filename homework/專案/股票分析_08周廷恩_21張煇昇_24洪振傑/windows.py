@@ -91,7 +91,7 @@ class Window(ThemedTk):
         # 开始年份
         start_year_label = ttk.Label(self.left_top_frame, text="起始年:")
         start_year_label.grid(row=1, column=0, padx=10, pady=10, sticky="W")
-        self.start_year_combobox = ttk.Combobox(self.left_top_frame, values=list(range(2008, 2024)), state='readonly')
+        self.start_year_combobox = ttk.Combobox(self.left_top_frame, values=list(range(2008, 2025)), state='readonly')
         self.start_year_combobox.set("年份(西元)")
         self.start_year_combobox.grid(row=1, column=1, padx=10, pady=10, sticky="W")
         self.start_year_combobox.bind("<<ComboboxSelected>>", self.update_end_years)
@@ -131,7 +131,7 @@ class Window(ThemedTk):
 
     def update_end_years(self, event):
         start_year = int(self.start_year_combobox.get())
-        self.end_year_combobox['values'] = list(range(start_year, 2024))
+        self.end_year_combobox['values'] = list(range(start_year, 2025))
         self.end_year_combobox.set("年份(西元)")
 
     def update_end_months(self, event=None):
@@ -208,7 +208,8 @@ class Window(ThemedTk):
             cols.append(cols.pop(cols.index('Close')))
             original_datas = original_datas[cols]
 
-            month_datas = original_datas.drop(columns=['Date'])
+            # month_datas = original_datas.drop(columns=['Date'])
+            month_datas = original_datas
             original_datas.to_csv('2330.csv', index=False)
             # 將 month_datas 寫入 data.csv
             month_datas.to_csv('data.csv', index=False)
